@@ -81,7 +81,8 @@ DATABASES = {
         "NAME": "geo",
         "USER": "postgres",
         "PASSWORD" :"postgres",
-        "PORT": "5433",
+        'HOST': 'localhost',
+        "PORT": "5432",
     },
 }
 
@@ -126,11 +127,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-OSGEO4W = "C:\OSGeo4W"
+'''OSGEO4W = "C:\OSGeo4W"
 os.environ['OSGEO4W_ROOT'] = OSGEO4W
 os.environ['GDAL_DATA'] = "C:\Program Files\PostgreSQL\15\gdal-data"
 os.environ['PROJ_LIB'] = "C:\OSGeo4W\share\proj"
 GDAL_LIBRARY_PATH = 'C:\OSGeo4W\\bin\gdal309'
 os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
-
+'''
+import os
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/local/lib/libgdal.dylib')
+GEOS_LIBRARY_PATH = '/usr/local/lib/libgeos_c.dylib'
